@@ -730,6 +730,9 @@ header .header-info .link-head ul{
     width: 100%;
   }
 }
+.address .container .info-boxs .map-adds img{
+    width: 100%;
+}
 /* end address */
 /* start footer */
 footer .container .foot-boxs{
