@@ -113,11 +113,11 @@ header .header-info .logo-Header i{
 }
 @media (max-width: 767px){
 header .header-info .link-head{
-  transition: 0.9s;
   transform: translateY(-650px);
   }
   header .header-info .link-head.show{
     transform: translateY(0);
+    transition: 0.9s;
   }
 }
 header .header-info .link-head ul{
