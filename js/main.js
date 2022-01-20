@@ -1,10 +1,15 @@
 // get element and creat var
-let botton = document.getElementById("clickMenu");
 let menuUl = document.querySelector(".link-head");
+let body = document.querySelector("body");
 // set click event
-botton.addEventListener("click", function () {
-  menuUl.classList.toggle("show");
+body.addEventListener("click", function (eo) {
+  if (eo.target.className == "fas fa-bars") {
+    menuUl.classList.toggle("show");
+  } else if (menuUl.classList == "link-head show") {
+    menuUl.classList.remove("show");
+  }
 });
+////////////////////////////////////////////////////////////////
 // get element and creat var
 let header = document.querySelector("header");
 let landing = document.querySelector(".landing");
@@ -21,25 +26,27 @@ window.onscroll = function () {
 let landingImg = Array.from(document.querySelectorAll(".landing .data"));
 let next = document.getElementById("next");
 let prevend = document.getElementById("prevure");
-let textLanding = Array.from(document.querySelectorAll(".landing .data .textLanding"))
+let textLanding = Array.from(
+  document.querySelectorAll(".landing .data .textLanding")
+);
 let current = 1;
 let slidcount = landingImg.length;
 // start cheker function
 checker();
 // what do the next bouton
 next.addEventListener("click", function () {
-  if (current == slidcount ) {
-    current = 0
+  if (current == slidcount) {
+    current = 0;
   } else {
     current++;
-    console.log(current)
+    console.log(current);
     checker();
   }
 });
 // what do the prevend bouton
 prevend.addEventListener("click", function () {
   if (current == 1) {
-    current = slidcount +1
+    current = slidcount + 1;
   } else {
     current--;
     checker();
@@ -71,23 +78,46 @@ let size = boxPortf[0].clientWidth + 25;
 
 // creat A next button
 nextPortf.addEventListener("click", function () {
-  if(counter == boxPortf.length-3){
-    return
+  if (counter == boxPortf.length - 3) {
+    return;
   }
   counter++;
   boxPortf.forEach((box) => {
-     box.style.transition = "transform 0.5s"
-    box.style.transform = `translateX(` + (-size * counter) + `px)`;
+    box.style.transition = "transform 0.5s";
+    box.style.transform = `translateX(` + -size * counter + `px)`;
   });
 });
 // creat A prevure botton
 prevurePortf.addEventListener("click", function () {
-  if(counter == 0){
-    return
+  if (counter == 0) {
+    return;
   }
   counter--;
   boxPortf.forEach((box) => {
-    box.style.transition = "transform 0.5s"
+    box.style.transition = "transform 0.5s";
     box.style.transform = `translateX(` + -size * counter + `px)`;
   });
 });
+///////////////////////////////////////////////////////////////////////////////
+// remove A placeholder when focus on input & textarea or return
+let input = document.querySelectorAll(".info-contact input");
+let textArea = document.querySelector("textarea");
+input.forEach((ele) => {
+  ele.onfocus = function () {
+    ele.setAttribute("data-place", ele.getAttribute("placeholder"));
+    ele.setAttribute("placeholder", " ");
+  };
+  ele.onblur = function () {
+    ele.setAttribute("placeholder", ele.getAttribute("data-place"));
+    ele.setAttribute("data-place", " ");
+  };
+});
+textArea.onfocus = function () {
+  textArea.setAttribute("data-place", textArea.getAttribute("placeholder"));
+  textArea.setAttribute("placeholder", " ");
+};
+textArea.onblur = function () {
+  textArea.setAttribute("placeholder", textArea.getAttribute("data-place"));
+  textArea.setAttribute("data-place", " ");
+};
+///////////////////////////////////////////////////////////////////////////////
