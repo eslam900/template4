@@ -154,6 +154,9 @@ header .header-info .link-head ul li::before {
 header .header-info .link-head ul li:hover::before {
   left: 0;
 }
+header .header-info .link-head ul .activ::before {
+  left: 0;
+}
 header .header-info .link-head ul li a {
   display: block;
   color: white;
@@ -165,6 +168,7 @@ header .header-info .link-head ul li a {
     font-weight: 400;
     color: white;
     padding: 15px;
+    transition: 0.3s;
   }
 }
 /* end header */
