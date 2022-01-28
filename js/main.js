@@ -13,6 +13,9 @@ body.addEventListener("click", function (eo) {
 // get element and creat var
 let header = document.querySelector("header");
 let landing = document.querySelector(".landing");
+let sections = document.querySelectorAll("body .section");
+let links = document.querySelectorAll("#menu li a ");
+let lis = document.querySelectorAll("#menu li");
 // set the scrolling
 window.onscroll = function () {
   if (window.scrollY >= 20) {
@@ -20,7 +23,26 @@ window.onscroll = function () {
   } else {
     header.style.backgroundColor = "transparent";
   }
+  /////////////////////////////////////////////////////////////////////
+  sections.forEach((section) => {
+    if (window.scrollY >= section.offsetTop - 150) {
+      removColor();
+      links.forEach((link) => {
+        if (link.dataset.id === section.id) {
+          link.style.color = "#f7a854";
+          link.parentElement.classList.add("activ");
+        }
+      });
+    }
+  });
 };
+const removColor = function () {
+  links.forEach((link) => {
+    link.style.color = "white";
+    link.parentElement.classList.remove("activ");
+  });
+};
+
 // ///////////////////////////////////////////////////////////
 // get element and creat var
 let landingImg = Array.from(document.querySelectorAll(".landing .data"));
